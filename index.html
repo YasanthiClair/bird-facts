@@ -9,18 +9,26 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
+            background-image: url('https://example.com/path-to-your-bird-image.jpg'); /* Replace with your bird image URL */
+            background-size: cover; /* Cover the entire background */
+            filter: blur(5px); /* Apply blur effect to the background */
+            position: relative; /* Position relative for absolute positioning of elements */
         }
 
         #factDisplay {
             margin: 20px;
             font-size: 20px;
             color: #333;
+            position: relative; /* Position relative to keep it above the blurred background */
+            z-index: 1; /* Ensure it appears above the blurred background */
         }
 
         button {
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
+            position: relative; /* Position relative for movement */
+            z-index: 1; /* Ensure it appears above the blurred background */
         }
     </style>
 </head>
@@ -64,67 +72,3 @@
 </html>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bird Facts</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        #factDisplay {
-            margin: 20px;
-            font-size: 20px;
-            color: #333;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <h1>Bird Facts</h1>
-    <div id="factDisplay">Press the button to see a bird fact!</div>
-    <button id="factButton">Show Random Fact</button>
-
-    <script>
-        const facts = [
-            "Birds are warm-blooded vertebrates that belong to the class Aves.",
-            "There are approximately 10,000 different species of birds worldwide.",
-            "Birds have feathers, which are unique to their class and help with flight, insulation, and display.",
-            "Most birds lay eggs, and they typically have hard shells made of calcium carbonate.",
-            "Birds communicate using a variety of vocalizations, including songs, calls, and even mimicry.",
-            "Many birds migrate seasonally, traveling thousands of miles to find food and suitable breeding grounds.",
-            "Birds have a highly developed sense of vision, often seeing a broader spectrum of colors than humans."
-        ];
-
-        let clickCount = 0;
-
-        document.getElementById('factButton').addEventListener('click', function() {
-            // Display a random fact
-            const randomFact = facts[Math.floor(Math.random() * facts.length)];
-            document.getElementById('factDisplay').innerText = randomFact;
-
-            // Increment click count
-            clickCount++;
-
-            // Move button after three clicks
-            if (clickCount === 3) {
-                const button = document.getElementById('factButton');
-                button.style.position = 'absolute';
-                button.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-                button.style.left = Math.random() * (window.innerWidth - 150) + 'px';
-                clickCount = 0; // Reset click count
-            }
-        });
-    </script>
-</body>
-</html>
